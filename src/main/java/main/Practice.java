@@ -2,15 +2,17 @@ package main;
 
 public class Practice {
 
+
     /**
      * 1. feladat (2 pont)
      *
      * Valósítsd meg a getLastNumber metódust! A metódus adja vissza a paraméterként kapott tömb utolsó elemét!
      */
     public static int getLastNumber(int[] numbers) {
-        // Ide írd a metódus megvalósítását...
+
         // Ne felejtsd el átírni a return értékét!
-        return -1;
+        return numbers[numbers.length - 1];
+
     }
 
     /**
@@ -22,7 +24,7 @@ public class Practice {
     public static int getTopLeftNumber(int[][] matrix) {
         // Ide írd a metódus megvalósítását...
         // Ne felejtsd el átírni a return értékét!
-        return -1;
+        return matrix[0][0];
     }
 
     /**
@@ -32,9 +34,13 @@ public class Practice {
      * A metódus adja vissza, hogy a paraméterként kapott tömbben hány páros szám szerepel!
      */
     public static int countEvenNumbers(int[] numbers) {
-        // Ide írd a metódus megvalósítását...
-        // Ne felejtsd el átírni a return értékét!
-        return -1;
+        int evenNumbers = 0;
+        for (int i = 0;  i < numbers.length; i++) {
+            if (numbers[i] % 2 == 0) {
+                evenNumbers++;
+            }
+        }
+        return evenNumbers;
     }
 
     /**
@@ -45,8 +51,11 @@ public class Practice {
      * Ha a tömbben nem szerepel ez a szám, a metódus visszatérési értéke legyen -1.
      */
     public static int findNumber(int[] numbers, int number) {
-        // Ide írd a metódus megvalósítását...
-        // Ne felejtsd el átírni a return értékét!
+        for (int i = 0;  i < numbers.length; i++) {
+            if (numbers[i] == number) {
+                return i;
+            }
+        }
         return -1;
     }
 
@@ -60,9 +69,15 @@ public class Practice {
      * A bemeneti paraméterként kapott tömbre igaz, hogy minden eleme eltérő értékű. (Azaz csak egy maximuma van.)
      */
     public static int findMaxIndex(int[] numbers) {
-        // Ide írd a metódus megvalósítását...
-        // Ne felejtsd el átírni a return értékét!
-        return -1;
+        int maxNumber = 0;
+        int index = 0;
+        for (int i = 0; i < numbers.length;i++) {
+            if (maxNumber < numbers[i]) {
+                maxNumber = numbers[i];
+                index = i;
+            }
+        }
+        return index;
     }
 
     /**
@@ -75,9 +90,13 @@ public class Practice {
      * Ügyelj arra, hogy a 0 (nulla) se nem pozitív, se nem negatív szám!
      */
     public static boolean hasPositivesOnly(int[] numbers) {
-        // Ide írd a metódus megvalósítását...
-        // Ne felejtsd el átírni a return értékét!
-        return false;
+        for (int i= 0; i < numbers.length;i++) {
+            if (numbers[i] < 1) {
+                return false;
+            }
+
+        }
+        return true;
     }
 
     /**
@@ -115,9 +134,19 @@ public class Practice {
      *      indoklás: mivel 2 szám szerepel az első tömbből a másodikban (a 3 és a 4)
      */
     public static int countSameNumbers(int[] firstNumbers, int[] secondNumbers) {
-        // Ide írd a metódus megvalósítását...
-        // Ne felejtsd el átírni a return értékét!
-        return -1;
+        int sameNumberCount = 0;
+        int currentNumber = 0;
+        for (int i = 0; i < firstNumbers.length;i++) {
+            for (int j = 0; j < secondNumbers.length;j++) {
+                if (firstNumbers[i] == secondNumbers[j]) {
+                    if(currentNumber != secondNumbers[j]){
+                        sameNumberCount++;
+                        currentNumber = firstNumbers[i];
+                    }
+                }
+            }
+        }
+        return sameNumberCount;
     }
 
     /**
